@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CompleteItems_v2">
+    <Key>
+      <PropertyRef Name="Article_No" />
+      <PropertyRef Name="dependantTable" />
+    </Key>
+    <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pack_Quantity" Type="int" />
+    <Property Name="Unit_Content" Type="int" />
+    <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
+    <Property Name="MPN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+    <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Col1Break" Type="int" />
+    <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="IMEModelStoreContainer">
+    <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CompleteItems_v2].[Article_No] AS [Article_No], 
+    [CompleteItems_v2].[Article_Desc] AS [Article_Desc], 
+    [CompleteItems_v2].[Pack_Quantity] AS [Pack_Quantity], 
+    [CompleteItems_v2].[Unit_Content] AS [Unit_Content], 
+    [CompleteItems_v2].[Unit_Measure] AS [Unit_Measure], 
+    [CompleteItems_v2].[MPN] AS [MPN], 
+    [CompleteItems_v2].[Manufacturer] AS [Manufacturer], 
+    [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
+    [CompleteItems_v2].[Col1Break] AS [Col1Break], 
+    [CompleteItems_v2].[Col1Price] AS [Col1Price], 
+    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
+    [CompleteItems_v2].[dependantTable] AS [dependantTable]
+    FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

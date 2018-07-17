@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IMEModelStoreContainer" CdmEntityContainer="IMEEntities">
+    <EntitySetMapping Name="CompleteItems_v2">
+      <EntityTypeMapping TypeName="IMEModel.CompleteItems_v2">
+        <MappingFragment StoreEntitySet="CompleteItems_v2">
+          <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+          <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+          <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+          <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+          <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+          <ScalarProperty Name="MPN" ColumnName="MPN" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+          <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+          <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+          <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+          <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
