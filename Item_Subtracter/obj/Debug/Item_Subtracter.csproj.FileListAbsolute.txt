@@ -26,7 +26,6 @@ C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\EntityFramework.dll
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\EntityFramework.SqlServer.dll
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\EntityFramework.xml
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\EntityFramework.SqlServer.xml
-C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csprojResolveAssemblyReference.cache
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csproj.ResolveComReference.cache
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.Form1.resources
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.Properties.Resources.resources
@@ -41,3 +40,5 @@ C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Shared.Ba
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.Office2010Form1.resources
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Core.WinForms.dll
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Core.WinForms.xml
+C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csprojAssemblyReference.cache
+C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csproj.CopyComplete
