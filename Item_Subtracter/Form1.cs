@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Item_Subtracter.DataModel;
 using Microsoft.Office.Interop.Excel;
@@ -24,121 +21,126 @@ namespace Item_Subtracter
         {
             InitializeComponent();
             db = new IMEEntities();
-            
-            GetAllItems();
         }
         
         private void btnImportExcel_Click(object sender, EventArgs e)
         {
-            dgItems.Rows.Clear();
-            List<string> Ham_MPN_Listesi = new List<string>();
-            List<string> Donusturulmus_MPN_Listesi = new List<string>();
-            List<MPN> result = new List<MPN>();
-
-
-            if (ChooseFile(Ham_MPN_Listesi))
+            if (mpn_ime.Count == 0)
             {
-                foreach (string mpn in Ham_MPN_Listesi)
-                {
-                    Donusturulmus_MPN_Listesi.Add(RemoveIgnoredCharacters(mpn));
-                }
+                MessageBox.Show("MPN Listesi Hazır Değil, Önce MPN Listesini Yükleyin");
+            }
+            else
+            {
+                dgItems.Rows.Clear();
+                List<string> Ham_MPN_Listesi = new List<string>();
+                List<string> Donusturulmus_MPN_Listesi = new List<string>();
+                List<MPN> result = new List<MPN>();
 
-                List<string> urun_bulunan_mpnler = new List<string>();
-                foreach (string mpn in Donusturulmus_MPN_Listesi)
-                {
-                    string tempMPN = mpn.ToString();
-                    List<string> b = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
-                    
-                    if (b.Count() > 0)
-                    {
-                        int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x.Contains(tempMPN));
 
-                        urun_bulunan_mpnler.Add(Ham_MPN_Listesi[ham_mpn_indexi]);
-                    }
-                    else
+                if (ChooseFile(Ham_MPN_Listesi))
+                {
+                    foreach (string mpn in Ham_MPN_Listesi)
                     {
-                        SearchItemWithMPN_InsertIntoFoundMPNs(tempMPN, b, Donusturulmus_MPN_Listesi, urun_bulunan_mpnler, Ham_MPN_Listesi);
+                        Donusturulmus_MPN_Listesi.Add(RemoveIgnoredCharacters(mpn));
                     }
 
-                    //Bulunan ilk MPN'i değil, eşleşme olan tüm MPN'ler getirilmeli
-                    var a = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
-
-
-                    if (a.Count > 0)
+                    List<string> urun_bulunan_mpnler = new List<string>();
+                    foreach (string mpn in Donusturulmus_MPN_Listesi)
                     {
-                        foreach (string item in a)
+                        string tempMPN = mpn.ToString();
+                        List<string> b = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
+
+                        if (b.Count() > 0)
+                        {
+                            int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x.Contains(tempMPN));
+
+                            urun_bulunan_mpnler.Add(Ham_MPN_Listesi[ham_mpn_indexi]);
+                        }
+                        else
+                        {
+                            SearchItemWithMPN_InsertIntoFoundMPNs(tempMPN, b, Donusturulmus_MPN_Listesi, urun_bulunan_mpnler, Ham_MPN_Listesi);
+                        }
+
+                        //Bulunan ilk MPN'i değil, eşleşme olan tüm MPN'ler getirilmeli
+                        var a = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
+
+
+                        if (a.Count > 0)
+                        {
+                            foreach (string item in a)
+                            {
+                                int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x == mpn);
+                                int index_a = MPN_Listesi.FindIndex(x => x == item);
+                                string __mpn = mpn_ime[index_a].Key.ToString();
+                                List<CompleteItems_v2> mpn_bulunan_urunler = db.CompleteItems_v2.Where(x => x.MPN == __mpn).ToList();
+
+                                MPN _mpn = new MPN();
+                                _mpn.LineNo = ham_mpn_indexi + 1;
+                                _mpn.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi];
+                                _mpn.items = mpn_bulunan_urunler.ToList();
+                                result.Add(_mpn);
+                            }
+                        }
+                        else
                         {
                             int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x == mpn);
-                            int index_a = MPN_Listesi.FindIndex(x => x == item);
-                            string __mpn = mpn_ime[index_a].Key.ToString();
-                            List<CompleteItems_v2> mpn_bulunan_urunler = db.CompleteItems_v2.Where(x => x.MPN == __mpn).ToList();
+                            MPN m = new MPN();
+                            m.LineNo = ham_mpn_indexi + 1;
+                            m.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi];
+                            m.items = new List<CompleteItems_v2>();
 
-                            MPN _mpn = new MPN();
-                            _mpn.LineNo = ham_mpn_indexi + 1;
-                            _mpn.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi];
-                            _mpn.items = mpn_bulunan_urunler.ToList();
-                            result.Add(_mpn);
+                            result.Add(m);
                         }
                     }
-                    else
-                    {
-                        int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x == mpn);
-                        MPN m = new MPN();
-                        m.LineNo = ham_mpn_indexi + 1;
-                        m.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi];
-                        m.items = new List<CompleteItems_v2>();
 
-                        result.Add(m);
-                    }
-                }
-
-                List<_Item> items = new List<_Item>();
-                foreach (MPN item in result)
-                {
-                    if (item.items.Count > 0)
+                    List<_Item> items = new List<_Item>();
+                    foreach (MPN item in result)
                     {
-                        foreach (CompleteItems_v2 i in item.items)
+                        if (item.items.Count > 0)
+                        {
+                            foreach (CompleteItems_v2 i in item.items)
+                            {
+                                _Item x = new _Item();
+                                x.LineNo = item.LineNo;
+                                x.customerMPN = item.customerMPN;
+                                x.item = i;
+
+                                items.Add(x);
+                            }
+                        }
+                        else
                         {
                             _Item x = new _Item();
                             x.LineNo = item.LineNo;
                             x.customerMPN = item.customerMPN;
-                            x.item = i;
+                            x.item = null;
 
                             items.Add(x);
                         }
+
                     }
-                    else
+
+                    foreach (_Item item in items)
                     {
-                        _Item x = new _Item();
-                        x.LineNo = item.LineNo;
-                        x.customerMPN = item.customerMPN;
-                        x.item = null;
-
-                        items.Add(x);
+                        ItemDetailFill_Row(item);
                     }
 
-                }
-
-                foreach (_Item item in items)
-                {
-                    ItemDetailFill_Row(item);
-                }
-
-                string temp = String.Empty;
-                Color c = new Color();
-                foreach (DataGridViewRow row in dgItems.Rows)
-                {
-                    if (temp != row.Cells[dgMPN.Index].Value.ToString())
+                    string temp = String.Empty;
+                    Color c = new Color();
+                    foreach (DataGridViewRow row in dgItems.Rows)
                     {
-                        temp = row.Cells[dgMPN.Index].Value.ToString();
-                        c = Color.FromArgb((64 + rnd.Next(128)), (64 + rnd.Next(128)), (64 + rnd.Next(128)));
+                        if (temp != row.Cells[dgMPN.Index].Value.ToString())
+                        {
+                            temp = row.Cells[dgMPN.Index].Value.ToString();
+                            c = Color.FromArgb((100 + rnd.Next(128)), (100 + rnd.Next(128)), (100 + rnd.Next(128)));
+                        }
+                        row.DefaultCellStyle.BackColor = c;
                     }
-                    row.DefaultCellStyle.BackColor = c;
                 }
-            }
-            else
-            {
-                MessageBox.Show("File not selected!", "Excel");
+                else
+                {
+                    MessageBox.Show("File not selected!", "Excel");
+                }
             }
         }
         
@@ -256,8 +258,44 @@ namespace Item_Subtracter
             }
             row.Cells[dgArticleDesc.Index].Value = rowItem.item?.Article_Desc;
             row.Cells[dgManufacturer.Index].Value = rowItem.item?.Manufacturer;
+            row.Cells[dgStockQuantity.Index].Value = (rowItem.item?.OnhandStockBalance != null) ? rowItem.item?.OnhandStockBalance.ToString() : "";
+
+
+            if(rowItem.item?.OnhandStockBalance <= 0 && rowItem.item?.CatalogueStatus != null)
+            {
+                if (rowItem.item?.CatalogueStatus == 2)
+                {
+                    row.Cells[dgStockQuantity.Index].Value = "FD";
+                    row.Cells[dgStockQuantity.Index].Style.ForeColor = Color.Red;
+                }
+                else if (rowItem.item?.CatalogueStatus == 3)
+                {
+                    row.Cells[dgStockQuantity.Index].Value = "D";
+                    row.Cells[dgStockQuantity.Index].Style.ForeColor = Color.Red;
+                }
+            }
+
             row.Cells[dgPrice.Index].Value = (rowItem.item?.Col1Price * Convert.ToDecimal(7.2));
             row.Cells[dgMHCodeLevel1.Index].Value = rowItem.item?.MH_Code_Level_1;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Yükleniyor";
+            label1.ForeColor = Color.MidnightBlue;
+            this.Refresh();
+            try
+            {
+                GetAllItems();
+                label1.Text = "Liste Hazır";
+                label1.ForeColor = Color.Green;
+                button1.Visible = false;
+            }
+            catch
+            {
+                label1.Text = "Liste Yüklenemedi!";
+                label1.ForeColor = Color.Red;
+            }
         }
     }
 
