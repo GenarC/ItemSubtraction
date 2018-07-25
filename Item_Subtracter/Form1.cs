@@ -312,4 +312,10 @@ namespace Item_Subtracter
         public string customerMPN { get; set; }
         public CompleteItems_v2 item { get; set; }
     }
+
+    class ExcelItem
+    {
+        public string MPN { get; set; }
+        public int Quantity { get; set; }
+    }
 }
