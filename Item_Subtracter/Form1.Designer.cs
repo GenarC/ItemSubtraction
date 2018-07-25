@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgItems = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -49,6 +50,7 @@
             this.dgUnitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgArticleDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgManufacturer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustomerQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMHCodeLevel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +89,7 @@
             this.dgUnitMeasure,
             this.dgArticleDesc,
             this.dgManufacturer,
+            this.dgCustomerQuantity,
             this.dgStockQuantity,
             this.dgPrice,
             this.dgMHCodeLevel1});
@@ -150,6 +153,7 @@
             this.dgSelect.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dgSelect.HeaderText = "X";
             this.dgSelect.Name = "dgSelect";
+            this.dgSelect.ReadOnly = true;
             this.dgSelect.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dgSelect.Visible = false;
@@ -160,13 +164,14 @@
             this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
+            this.dgNo.ReadOnly = true;
             this.dgNo.Width = 55;
             // 
             // dgMPN
             // 
             this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgMPN.HeaderText = "MPN";
             this.dgMPN.Name = "dgMPN";
             this.dgMPN.ReadOnly = true;
@@ -175,8 +180,8 @@
             // dgRsMPN
             // 
             this.dgRsMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRsMPN.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRsMPN.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRsMPN.HeaderText = "RS MPN";
             this.dgRsMPN.Name = "dgRsMPN";
             this.dgRsMPN.ReadOnly = true;
@@ -185,8 +190,8 @@
             // dgArticleNo
             // 
             this.dgArticleNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgArticleNo.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgArticleNo.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgArticleNo.HeaderText = "Article No";
             this.dgArticleNo.Name = "dgArticleNo";
             this.dgArticleNo.ReadOnly = true;
@@ -203,8 +208,8 @@
             // dgUnitMeasure
             // 
             this.dgUnitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgUnitMeasure.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgUnitMeasure.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgUnitMeasure.HeaderText = "Unit Measure (UoM)";
             this.dgUnitMeasure.Name = "dgUnitMeasure";
             this.dgUnitMeasure.ReadOnly = true;
@@ -225,11 +230,21 @@
             this.dgManufacturer.ReadOnly = true;
             this.dgManufacturer.Width = 121;
             // 
+            // dgCustomerQuantity
+            // 
+            this.dgCustomerQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dgCustomerQuantity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgCustomerQuantity.HeaderText = "Qty";
+            this.dgCustomerQuantity.Name = "dgCustomerQuantity";
+            this.dgCustomerQuantity.ReadOnly = true;
+            this.dgCustomerQuantity.Width = 59;
+            // 
             // dgStockQuantity
             // 
             this.dgStockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgStockQuantity.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgStockQuantity.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgStockQuantity.HeaderText = "Stock Qty";
             this.dgStockQuantity.Name = "dgStockQuantity";
             this.dgStockQuantity.ReadOnly = true;
@@ -237,8 +252,8 @@
             // 
             // dgPrice
             // 
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgPrice.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgPrice.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgPrice.HeaderText = "Price";
             this.dgPrice.Name = "dgPrice";
             this.dgPrice.ReadOnly = true;
@@ -283,6 +298,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitMeasure;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgArticleDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgManufacturer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustomerQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgMHCodeLevel1;

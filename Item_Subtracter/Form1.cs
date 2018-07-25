@@ -32,19 +32,19 @@ namespace Item_Subtracter
             else
             {
                 dgItems.Rows.Clear();
-                List<string> Ham_MPN_Listesi = new List<string>();
+                List<ExcelItem> Ham_MPN_Listesi = new List<ExcelItem>();
                 List<string> Donusturulmus_MPN_Listesi = new List<string>();
                 List<MPN> result = new List<MPN>();
 
 
                 if (ChooseFile(Ham_MPN_Listesi))
                 {
-                    foreach (string mpn in Ham_MPN_Listesi)
+                    foreach (ExcelItem mpn in Ham_MPN_Listesi)
                     {
-                        Donusturulmus_MPN_Listesi.Add(RemoveIgnoredCharacters(mpn));
+                        Donusturulmus_MPN_Listesi.Add(RemoveIgnoredCharacters(mpn.MPN));
                     }
 
-                    List<string> urun_bulunan_mpnler = new List<string>();
+                    List<ExcelItem> urun_bulunan_mpnler = new List<ExcelItem>();
                     foreach (string mpn in Donusturulmus_MPN_Listesi)
                     {
                         string tempMPN = mpn.ToString();
@@ -76,7 +76,8 @@ namespace Item_Subtracter
 
                                 MPN _mpn = new MPN();
                                 _mpn.LineNo = ham_mpn_indexi + 1;
-                                _mpn.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi];
+                                _mpn.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi].MPN;
+                                _mpn.customerQuantity = Ham_MPN_Listesi[ham_mpn_indexi].Quantity;
                                 _mpn.items = mpn_bulunan_urunler.ToList();
                                 result.Add(_mpn);
                             }
@@ -86,7 +87,7 @@ namespace Item_Subtracter
                             int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x == mpn);
                             MPN m = new MPN();
                             m.LineNo = ham_mpn_indexi + 1;
-                            m.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi];
+                            m.customerMPN = Ham_MPN_Listesi[ham_mpn_indexi].MPN;
                             m.items = new List<CompleteItems_v2>();
 
                             result.Add(m);
@@ -103,6 +104,7 @@ namespace Item_Subtracter
                                 _Item x = new _Item();
                                 x.LineNo = item.LineNo;
                                 x.customerMPN = item.customerMPN;
+                                x.customerQuantity = item.customerQuantity;
                                 x.item = i;
 
                                 items.Add(x);
@@ -113,6 +115,7 @@ namespace Item_Subtracter
                             _Item x = new _Item();
                             x.LineNo = item.LineNo;
                             x.customerMPN = item.customerMPN;
+                            x.customerQuantity = item.customerQuantity;
                             x.item = null;
 
                             items.Add(x);
@@ -144,7 +147,7 @@ namespace Item_Subtracter
             }
         }
         
-        void SearchItemWithMPN_InsertIntoFoundMPNs(string tempMPN, List<string> list, List<string> convertedMpnList, List<string> ItemFoundMPNs, List<string> RawMPNList)
+        void SearchItemWithMPN_InsertIntoFoundMPNs(string tempMPN, List<string> list, List<string> convertedMpnList, List<ExcelItem> ItemFoundMPNs, List<ExcelItem> RawMPNList)
         {
             if (tempMPN.Length >= 8)
             {
@@ -204,7 +207,7 @@ namespace Item_Subtracter
             return temp_mpn;
         }
 
-        private bool ChooseFile(List<string> Ham_MPN_Listesi)
+        private bool ChooseFile(List<ExcelItem> Ham_MPN_Listesi)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "txt files (*.xlsx)|*.xlsx";
@@ -218,7 +221,8 @@ namespace Item_Subtracter
                 while (!String.IsNullOrEmpty(ws.Cells[i, 1].Value?.ToString()))
                 {
                     string text = ws.Cells[i, 1].Value.ToString();
-                    Ham_MPN_Listesi.Add(text);
+                    object qty = ws.Cells[i, 2].Value;
+                    Ham_MPN_Listesi.Add(new ExcelItem { MPN = text, Quantity = Convert.ToDecimal(qty) });
                     i++;
                 }
 
@@ -258,6 +262,7 @@ namespace Item_Subtracter
             }
             row.Cells[dgArticleDesc.Index].Value = rowItem.item?.Article_Desc;
             row.Cells[dgManufacturer.Index].Value = rowItem.item?.Manufacturer;
+            row.Cells[dgCustomerQuantity.Index].Value = rowItem.customerQuantity;
             row.Cells[dgStockQuantity.Index].Value = (rowItem.item?.OnhandStockBalance != null) ? rowItem.item?.OnhandStockBalance.ToString() : "";
 
 
@@ -275,7 +280,7 @@ namespace Item_Subtracter
                 }
             }
 
-            row.Cells[dgPrice.Index].Value = (rowItem.item?.Col1Price * Convert.ToDecimal(7.2));
+            row.Cells[dgPrice.Index].Value = rowItem.item?.Col1Price;
             row.Cells[dgMHCodeLevel1.Index].Value = rowItem.item?.MH_Code_Level_1;
         }
 
@@ -303,6 +308,7 @@ namespace Item_Subtracter
     {
         public int LineNo { get; set; }
         public string customerMPN { get; set; }
+        public decimal customerQuantity { get; set; }
         public List<CompleteItems_v2> items { get; set; }
     }
 
@@ -310,12 +316,13 @@ namespace Item_Subtracter
     {
         public int LineNo { get; set; }
         public string customerMPN { get; set; }
+        public decimal customerQuantity { get; set; }
         public CompleteItems_v2 item { get; set; }
     }
 
     class ExcelItem
     {
         public string MPN { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
     }
 }
