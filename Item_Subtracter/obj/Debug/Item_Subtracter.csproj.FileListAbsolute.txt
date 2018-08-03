@@ -35,10 +35,5 @@ C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.exe.
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.application
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.exe
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.pdb
-C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Shared.Base.dll
-C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Shared.Base.xml
-C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.Office2010Form1.resources
-C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Core.WinForms.dll
-C:\C#Repositories\ItemSubtraction\Item_Subtracter\bin\Debug\Syncfusion.Core.WinForms.xml
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csprojAssemblyReference.cache
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csproj.CopyComplete

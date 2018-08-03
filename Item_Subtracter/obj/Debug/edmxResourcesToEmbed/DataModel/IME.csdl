@@ -17,7 +17,7 @@
     <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
     <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
     <Property Name="CatalogueStatus" Type="Int32" />
-    <Property Name="OnhandStockBalance" Type="Int32" />
+    <Property Name="OnhandStockBalance" Type="Int64" />
     <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="MPN_List">

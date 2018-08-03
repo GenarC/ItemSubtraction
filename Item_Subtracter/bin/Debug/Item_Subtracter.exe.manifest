@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Item_Subtracter.exe" version="1.0.0.21" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Item_Subtracter.exe" version="1.0.0.28" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Item_Subtracter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -66,38 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Item_Subtracter.exe" size="112608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Item_Subtracter.exe" size="41952">
       <assemblyIdentity name="Item_Subtracter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>B2/U+p0KNZikCWA2Z2U6+a36SYaYDN/Y02eatn0IHrA=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.Core.WinForms.dll" size="471040">
-      <assemblyIdentity name="Syncfusion.Core.WinForms" version="16.2460.0.41" publicKeyToken="3D67ED1F87D44C89" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NVygF0fh5dMI6fvrqFl89yfmin/cVKVQv17bq8hj974=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.Shared.Base.dll" size="4329472">
-      <assemblyIdentity name="Syncfusion.Shared.Base" version="16.2460.0.41" publicKeyToken="3D67ED1F87D44C89" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UD27mxn6bWtI9rvefKj3BJW0zwujheJuY3bd69fZ/CM=</dsig:DigestValue>
+        <dsig:DigestValue>Gf7kR8V3wxEWDmNpRp7lapZDdERopNzEtjsqLgQ9BRw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -119,13 +95,13 @@
       <dsig:DigestValue>kz9SXB56VppniFl0+DkksvXiuzcEvJvADfj2TVH1ra4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Item_Subtracter.exe.config" size="1862">
+  <file name="Item_Subtracter.exe.config" size="1459">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>RckqFBjeyz5gFUDu2VJx8f7TFcAueLc3Tbhx4XX6q+8=</dsig:DigestValue>
+      <dsig:DigestValue>AGddiggfAaT3tJczh0LV8dh/8jq1SEX3DQrlSE3Ncps=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

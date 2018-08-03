@@ -28,19 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgItems = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnImportExcel = new System.Windows.Forms.Button();
             this.dgSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +50,17 @@
             this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMHCodeLevel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnImportExcel = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMatchingProductCount = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,12 +69,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgItems, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1211, 541);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -99,8 +105,123 @@
             this.dgItems.Name = "dgItems";
             this.dgItems.ReadOnly = true;
             this.dgItems.RowTemplate.Height = 24;
-            this.dgItems.Size = new System.Drawing.Size(1179, 409);
+            this.dgItems.Size = new System.Drawing.Size(1179, 359);
             this.dgItems.TabIndex = 1;
+            // 
+            // dgSelect
+            // 
+            this.dgSelect.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgSelect.HeaderText = "X";
+            this.dgSelect.Name = "dgSelect";
+            this.dgSelect.ReadOnly = true;
+            this.dgSelect.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgSelect.Visible = false;
+            // 
+            // dgNo
+            // 
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.ReadOnly = true;
+            this.dgNo.Width = 55;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            this.dgMPN.Width = 67;
+            // 
+            // dgRsMPN
+            // 
+            this.dgRsMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRsMPN.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dgRsMPN.HeaderText = "RS MPN";
+            this.dgRsMPN.Name = "dgRsMPN";
+            this.dgRsMPN.ReadOnly = true;
+            this.dgRsMPN.Width = 83;
+            // 
+            // dgArticleNo
+            // 
+            this.dgArticleNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgArticleNo.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dgArticleNo.HeaderText = "Article No";
+            this.dgArticleNo.Name = "dgArticleNo";
+            this.dgArticleNo.ReadOnly = true;
+            this.dgArticleNo.Width = 91;
+            // 
+            // dgPackQuantity
+            // 
+            this.dgPackQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgPackQuantity.HeaderText = "Pack Quantity (SSM)";
+            this.dgPackQuantity.Name = "dgPackQuantity";
+            this.dgPackQuantity.ReadOnly = true;
+            this.dgPackQuantity.Width = 118;
+            // 
+            // dgUnitMeasure
+            // 
+            this.dgUnitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgUnitMeasure.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dgUnitMeasure.HeaderText = "Unit Measure (UoM)";
+            this.dgUnitMeasure.Name = "dgUnitMeasure";
+            this.dgUnitMeasure.ReadOnly = true;
+            this.dgUnitMeasure.Width = 5;
+            // 
+            // dgArticleDesc
+            // 
+            this.dgArticleDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgArticleDesc.HeaderText = "Article Desc";
+            this.dgArticleDesc.Name = "dgArticleDesc";
+            this.dgArticleDesc.ReadOnly = true;
+            // 
+            // dgManufacturer
+            // 
+            this.dgManufacturer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgManufacturer.HeaderText = "Manufacturer";
+            this.dgManufacturer.Name = "dgManufacturer";
+            this.dgManufacturer.ReadOnly = true;
+            this.dgManufacturer.Width = 121;
+            // 
+            // dgCustomerQuantity
+            // 
+            this.dgCustomerQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dgCustomerQuantity.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dgCustomerQuantity.HeaderText = "Qty";
+            this.dgCustomerQuantity.Name = "dgCustomerQuantity";
+            this.dgCustomerQuantity.ReadOnly = true;
+            this.dgCustomerQuantity.Width = 59;
+            // 
+            // dgStockQuantity
+            // 
+            this.dgStockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgStockQuantity.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgStockQuantity.HeaderText = "Stock Qty";
+            this.dgStockQuantity.Name = "dgStockQuantity";
+            this.dgStockQuantity.ReadOnly = true;
+            this.dgStockQuantity.Width = 5;
+            // 
+            // dgPrice
+            // 
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgPrice.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dgPrice.HeaderText = "Price";
+            this.dgPrice.Name = "dgPrice";
+            this.dgPrice.ReadOnly = true;
+            // 
+            // dgMHCodeLevel1
+            // 
+            this.dgMHCodeLevel1.HeaderText = "MH Code Level 1";
+            this.dgMHCodeLevel1.Name = "dgMHCodeLevel1";
+            this.dgMHCodeLevel1.ReadOnly = true;
             // 
             // panel2
             // 
@@ -148,121 +269,33 @@
             this.btnImportExcel.UseVisualStyleBackColor = true;
             this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
             // 
-            // dgSelect
+            // panel1
             // 
-            this.dgSelect.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgSelect.HeaderText = "X";
-            this.dgSelect.Name = "dgSelect";
-            this.dgSelect.ReadOnly = true;
-            this.dgSelect.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgSelect.Visible = false;
-            this.dgSelect.Width = 46;
+            this.panel1.Controls.Add(this.lblMatchingProductCount);
+            this.panel1.Controls.Add(this.lblCount);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 494);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1205, 44);
+            this.panel1.TabIndex = 3;
             // 
-            // dgNo
+            // lblMatchingProductCount
             // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.ReadOnly = true;
-            this.dgNo.Width = 55;
+            this.lblMatchingProductCount.AutoSize = true;
+            this.lblMatchingProductCount.Location = new System.Drawing.Point(158, 12);
+            this.lblMatchingProductCount.Name = "lblMatchingProductCount";
+            this.lblMatchingProductCount.Size = new System.Drawing.Size(16, 17);
+            this.lblMatchingProductCount.TabIndex = 1;
+            this.lblMatchingProductCount.Text = "0";
             // 
-            // dgMPN
+            // lblCount
             // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            this.dgMPN.Width = 67;
-            // 
-            // dgRsMPN
-            // 
-            this.dgRsMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRsMPN.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgRsMPN.HeaderText = "RS MPN";
-            this.dgRsMPN.Name = "dgRsMPN";
-            this.dgRsMPN.ReadOnly = true;
-            this.dgRsMPN.Width = 90;
-            // 
-            // dgArticleNo
-            // 
-            this.dgArticleNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgArticleNo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgArticleNo.HeaderText = "Article No";
-            this.dgArticleNo.Name = "dgArticleNo";
-            this.dgArticleNo.ReadOnly = true;
-            this.dgArticleNo.Width = 98;
-            // 
-            // dgPackQuantity
-            // 
-            this.dgPackQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgPackQuantity.HeaderText = "Pack Quantity (SSM)";
-            this.dgPackQuantity.Name = "dgPackQuantity";
-            this.dgPackQuantity.ReadOnly = true;
-            this.dgPackQuantity.Width = 154;
-            // 
-            // dgUnitMeasure
-            // 
-            this.dgUnitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgUnitMeasure.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgUnitMeasure.HeaderText = "Unit Measure (UoM)";
-            this.dgUnitMeasure.Name = "dgUnitMeasure";
-            this.dgUnitMeasure.ReadOnly = true;
-            this.dgUnitMeasure.Width = 5;
-            // 
-            // dgArticleDesc
-            // 
-            this.dgArticleDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgArticleDesc.HeaderText = "Article Desc";
-            this.dgArticleDesc.Name = "dgArticleDesc";
-            this.dgArticleDesc.ReadOnly = true;
-            // 
-            // dgManufacturer
-            // 
-            this.dgManufacturer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgManufacturer.HeaderText = "Manufacturer";
-            this.dgManufacturer.Name = "dgManufacturer";
-            this.dgManufacturer.ReadOnly = true;
-            this.dgManufacturer.Width = 121;
-            // 
-            // dgCustomerQuantity
-            // 
-            this.dgCustomerQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dgCustomerQuantity.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgCustomerQuantity.HeaderText = "Qty";
-            this.dgCustomerQuantity.Name = "dgCustomerQuantity";
-            this.dgCustomerQuantity.ReadOnly = true;
-            this.dgCustomerQuantity.Width = 59;
-            // 
-            // dgStockQuantity
-            // 
-            this.dgStockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgStockQuantity.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgStockQuantity.HeaderText = "Stock Qty";
-            this.dgStockQuantity.Name = "dgStockQuantity";
-            this.dgStockQuantity.ReadOnly = true;
-            this.dgStockQuantity.Width = 5;
-            // 
-            // dgPrice
-            // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgPrice.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgPrice.HeaderText = "Price";
-            this.dgPrice.Name = "dgPrice";
-            this.dgPrice.ReadOnly = true;
-            // 
-            // dgMHCodeLevel1
-            // 
-            this.dgMHCodeLevel1.HeaderText = "MH Code Level 1";
-            this.dgMHCodeLevel1.Name = "dgMHCodeLevel1";
-            this.dgMHCodeLevel1.ReadOnly = true;
+            this.lblCount.AutoSize = true;
+            this.lblCount.Location = new System.Drawing.Point(11, 12);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(138, 17);
+            this.lblCount.TabIndex = 0;
+            this.lblCount.Text = "Eşleşen Ürün Sayısı:";
             // 
             // Form1
             // 
@@ -277,6 +310,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -302,6 +337,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgMHCodeLevel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label lblMatchingProductCount;
     }
 }
 

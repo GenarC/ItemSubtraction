@@ -26,7 +26,7 @@ namespace Item_Subtracter.DataModel
         public Nullable<decimal> Col1Price { get; set; }
         public Nullable<decimal> DiscountedPrice1 { get; set; }
         public Nullable<int> CatalogueStatus { get; set; }
-        public Nullable<int> OnhandStockBalance { get; set; }
+        public Nullable<long> OnhandStockBalance { get; set; }
         public string dependantTable { get; set; }
     }
 }

@@ -16,6 +16,10 @@ namespace Item_Subtracter
         List<string> MPN_Listesi = new List<string>();
         IMEEntities db;
 
+        string _tempMPN;
+        int removedWordCount = 0;
+        int matchingItemCount = 0;
+
         private Random rnd = new Random();
         public Form1()
         {
@@ -32,6 +36,8 @@ namespace Item_Subtracter
             else
             {
                 dgItems.Rows.Clear();
+                matchingItemCount = 0;
+                lblMatchingProductCount.Text = matchingItemCount.ToString();
                 List<ExcelItem> Ham_MPN_Listesi = new List<ExcelItem>();
                 List<string> Donusturulmus_MPN_Listesi = new List<string>();
                 List<MPN> result = new List<MPN>();
@@ -41,18 +47,21 @@ namespace Item_Subtracter
                 {
                     foreach (ExcelItem mpn in Ham_MPN_Listesi)
                     {
-                        Donusturulmus_MPN_Listesi.Add(RemoveIgnoredCharacters(mpn.MPN));
+                        Donusturulmus_MPN_Listesi.Add(RemoveIgnoredCharacters(mpn.MPN).ToUpper());
                     }
 
                     List<ExcelItem> urun_bulunan_mpnler = new List<ExcelItem>();
                     foreach (string mpn in Donusturulmus_MPN_Listesi)
                     {
                         string tempMPN = mpn.ToString();
+                        _tempMPN = tempMPN;
+                        removedWordCount = 0;
                         List<string> b = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
 
                         if (b.Count() > 0)
                         {
                             int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x.Contains(tempMPN));
+                            _tempMPN = tempMPN;
 
                             urun_bulunan_mpnler.Add(Ham_MPN_Listesi[ham_mpn_indexi]);
                         }
@@ -62,7 +71,7 @@ namespace Item_Subtracter
                         }
 
                         //Bulunan ilk MPN'i değil, eşleşme olan tüm MPN'ler getirilmeli
-                        var a = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
+                        var a = MPN_Listesi.Where(x => x != null && x.Contains(_tempMPN)).ToList();
 
 
                         if (a.Count > 0)
@@ -123,10 +132,17 @@ namespace Item_Subtracter
 
                     }
 
+                    string mpn_ = String.Empty;
                     foreach (_Item item in items)
                     {
                         ItemDetailFill_Row(item);
+                        if (mpn_ != item.customerMPN && item.item != null)
+                        {
+                            matchingItemCount++;
+                        }
+                        mpn_ = item.customerMPN;
                     }
+                    lblMatchingProductCount.Text = matchingItemCount.ToString();
 
                     string temp = String.Empty;
                     Color c = new Color();
@@ -149,15 +165,17 @@ namespace Item_Subtracter
         
         void SearchItemWithMPN_InsertIntoFoundMPNs(string tempMPN, List<string> list, List<string> convertedMpnList, List<ExcelItem> ItemFoundMPNs, List<ExcelItem> RawMPNList)
         {
-            if (tempMPN.Length >= 8)
+            if (tempMPN.Length >= 8 & removedWordCount < 4)
             {
                 tempMPN = tempMPN.Substring(0, tempMPN.Length - 2);
+                removedWordCount += 2;
                 list = MPN_Listesi.Where(x => x != null && x.Contains(tempMPN)).ToList();
                 if (list.Count() > 0)
                 {
                     int ham_mpn_indexi = convertedMpnList.FindIndex(x => x.Contains(tempMPN));
 
                     ItemFoundMPNs.Add(RawMPNList[ham_mpn_indexi]);
+                    _tempMPN = tempMPN;
                 }
                 else
                 {
@@ -173,7 +191,7 @@ namespace Item_Subtracter
             {
                 if (item.Key != null)
                 {
-                    MPN_Listesi.Add(RemoveIgnoredCharacters(item.Key));
+                    MPN_Listesi.Add(RemoveIgnoredCharacters(item.Key).ToUpper());
                 }
                 else
                 {
@@ -296,10 +314,11 @@ namespace Item_Subtracter
                 label1.ForeColor = Color.Green;
                 button1.Visible = false;
             }
-            catch
+            catch (Exception ex)
             {
                 label1.Text = "Liste Yüklenemedi!";
                 label1.ForeColor = Color.Red;
+                mpn_ime = new List<IGrouping<string, MPN_List>>();
             }
         }
     }

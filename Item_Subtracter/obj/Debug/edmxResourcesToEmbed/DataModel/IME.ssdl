@@ -19,7 +19,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
     <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
     <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
     <Property Name="CatalogueStatus" Type="int" />
-    <Property Name="OnhandStockBalance" Type="int" />
+    <Property Name="OnhandStockBalance" Type="bigint" />
     <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
