@@ -342,11 +342,62 @@ namespace Item_Subtracter
                     row.Cells[dgStockQuantity.Index].Style.ForeColor = Color.Red;
                 }
             }
-            row.Cells[dgColBreak1.Index].Value = rowItem.item?.Col1Break;
-            row.Cells[dgPrice1.Index].Value = rowItem.item?.Col1Price;
-            row.Cells[dgColBreak2.Index].Value = rowItem.item?.Col2Break;
-            row.Cells[dgPrice2.Index].Value = rowItem.item?.Col2Price;
+
+
+            CalculateQuantityIntoRow(rowItem, row);
+            //row.Cells[dgColBreak1.Index].Value = rowItem.item?.Col1Break;
+            //row.Cells[dgPrice1.Index].Value = rowItem.item?.Col1Price;
+            //row.Cells[dgColBreak2.Index].Value = rowItem.item?.Col2Break;
+            //row.Cells[dgPrice2.Index].Value = rowItem.item?.Col2Price;
             row.Cells[dgMHCodeLevel1.Index].Value = rowItem.item?.MH_Code_Level_1;
+        }
+
+        private void CalculateQuantityIntoRow(_Item item, DataGridViewRow row)
+        {
+            CompleteItems_v2 i = item.item;
+            if (i != null)
+            {
+                if(item.customerQuantity >= i.Col1Break && (item.customerQuantity < i.Col2Break || i.Col2Break == 0))
+                {
+                    row.Cells[dgColBreak1.Index].Value = i.Col1Break;
+                    row.Cells[dgPrice1.Index].Value = i.Col1Price;
+
+                    row.Cells[dgColBreak2.Index].Value = i.Col2Break;
+                    row.Cells[dgPrice2.Index].Value = i.Col2Price;
+                }
+                else if (item.customerQuantity >= i.Col2Break && (item.customerQuantity < i.Col3Break || i.Col3Break == 0))
+                {
+                    row.Cells[dgColBreak1.Index].Value = i.Col2Break;
+                    row.Cells[dgPrice1.Index].Value = i.Col2Price;
+
+                    row.Cells[dgColBreak2.Index].Value = i.Col3Break;
+                    row.Cells[dgPrice2.Index].Value = i.Col3Price;
+                }
+                else if (item.customerQuantity >= i.Col3Break && (item.customerQuantity < i.Col4Break || i.Col4Break == 0))
+                {
+                    row.Cells[dgColBreak1.Index].Value = i.Col3Break;
+                    row.Cells[dgPrice1.Index].Value = i.Col3Price;
+
+                    row.Cells[dgColBreak2.Index].Value = i.Col4Break;
+                    row.Cells[dgPrice2.Index].Value = i.Col4Price;
+                }
+                else if (item.customerQuantity >= i.Col4Break && (item.customerQuantity < i.Col5Break || i.Col5Break == 0))
+                {
+                    row.Cells[dgColBreak1.Index].Value = i.Col4Break;
+                    row.Cells[dgPrice1.Index].Value = i.Col4Price;
+
+                    row.Cells[dgColBreak2.Index].Value = i.Col5Break;
+                    row.Cells[dgPrice2.Index].Value = i.Col5Price;
+                }
+                else if (item.customerQuantity >= i.Col5Break)
+                {
+                    row.Cells[dgColBreak1.Index].Value = i.Col5Break;
+                    row.Cells[dgPrice1.Index].Value = i.Col5Price;
+
+                    row.Cells[dgColBreak2.Index].Value = "--";
+                    row.Cells[dgPrice2.Index].Value = "--";
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
