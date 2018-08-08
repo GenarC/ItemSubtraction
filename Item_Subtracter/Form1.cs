@@ -357,7 +357,15 @@ namespace Item_Subtracter
             CompleteItems_v2 i = item.item;
             if (i != null)
             {
-                if(item.customerQuantity >= i.Col1Break && (item.customerQuantity < i.Col2Break || i.Col2Break == 0))
+                if(item.customerQuantity < i.Col1Break || i.Col1Break == 0)
+                {
+                    row.Cells[dgColBreak1.Index].Value = i.Col1Break;
+                    row.Cells[dgPrice1.Index].Value = i.Col1Price;
+
+                    row.Cells[dgColBreak2.Index].Value = i.Col2Break;
+                    row.Cells[dgPrice2.Index].Value = i.Col2Price;
+                }
+                else if (item.customerQuantity >= i.Col1Break && (item.customerQuantity < i.Col2Break || i.Col2Break == 0))
                 {
                     row.Cells[dgColBreak1.Index].Value = i.Col1Break;
                     row.Cells[dgPrice1.Index].Value = i.Col1Price;
@@ -454,6 +462,11 @@ namespace Item_Subtracter
                     }
                 }
             }
+        }
+
+        private void bw_ItemAnalyzer_DoWork(object sender, DoWorkEventArgs e)
+        {
+            importExcel();
         }
     }
 

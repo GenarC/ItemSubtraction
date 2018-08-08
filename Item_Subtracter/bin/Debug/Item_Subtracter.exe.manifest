@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Item_Subtracter.exe" size="242656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Item_Subtracter.exe" size="243168">
       <assemblyIdentity name="Item_Subtracter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VkAR821nARLgoVJAe79JtQv73ikpu9go/gZhEWb681g=</dsig:DigestValue>
+        <dsig:DigestValue>FSL8MTZzFvKkD0OEhHgv6P7o4HGD/T76MiP3OAmK80g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
