@@ -17,7 +17,14 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
     <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
     <Property Name="Col1Break" Type="int" />
     <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
-    <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Col2Break" Type="int" />
+    <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Col3Break" Type="int" />
+    <Property Name="Col3Price" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Col4Break" Type="int" />
+    <Property Name="Col4Price" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Col5Break" Type="int" />
+    <Property Name="Col5Price" Type="decimal" Precision="18" Scale="3" />
     <Property Name="CatalogueStatus" Type="int" />
     <Property Name="OnhandStockBalance" Type="bigint" />
     <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
@@ -44,7 +51,14 @@ warning 6002: The table/view 'IME.dbo.MPN_List' does not have a primary key defi
     [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
     [CompleteItems_v2].[Col1Break] AS [Col1Break], 
     [CompleteItems_v2].[Col1Price] AS [Col1Price], 
-    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
+    [CompleteItems_v2].[Col2Break] AS [Col2Break], 
+    [CompleteItems_v2].[Col2Price] AS [Col2Price], 
+    [CompleteItems_v2].[Col3Break] AS [Col3Break], 
+    [CompleteItems_v2].[Col3Price] AS [Col3Price], 
+    [CompleteItems_v2].[Col4Break] AS [Col4Break], 
+    [CompleteItems_v2].[Col4Price] AS [Col4Price], 
+    [CompleteItems_v2].[Col5Break] AS [Col5Break], 
+    [CompleteItems_v2].[Col5Price] AS [Col5Price], 
     [CompleteItems_v2].[CatalogueStatus] AS [CatalogueStatus], 
     [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
     [CompleteItems_v2].[dependantTable] AS [dependantTable]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,26 +13,47 @@ namespace Item_Subtracter
 {
     public partial class Form1 : Form
     {
-        List<IGrouping<string,MPN_List>> mpn_ime = new List<IGrouping<string, MPN_List>>();
+        //List<IGrouping<string,MPN_List>> __mpn_ime = new List<IGrouping<string, MPN_List>>();
+        List<string> mpn_ime = new List<string>();
         List<string> MPN_Listesi = new List<string>();
         IMEEntities db;
 
         string _tempMPN;
         int removedWordCount = 0;
         int matchingItemCount = 0;
+        List<Color> ColorList = new List<Color>();
+
+        string LogString = "MPN Listesi Hazır Değil";
 
         private Random rnd = new Random();
         public Form1()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             db = new IMEEntities();
+            ColorList.Add(Color.FromArgb(244, 176, 132));
+            ColorList.Add(Color.FromArgb(180, 198, 231));
+            ColorList.Add(Color.FromArgb(183, 240, 154));
+            ColorList.Add(Color.FromArgb(246, 180, 92));
+            ColorList.Add(Color.FromArgb(211, 163, 251));
+            ColorList.Add(Color.FromArgb(191, 246, 253));
+            ColorList.Add(Color.FromArgb(255, 171, 171));
+            ColorList.Add(Color.FromArgb(247, 255, 93));
+            ColorList.Add(Color.FromArgb(255, 129, 129));
+            ColorList.Add(Color.FromArgb(217, 217, 217));
         }
         
         private void btnImportExcel_Click(object sender, EventArgs e)
         {
+            importExcel();
+        }
+
+        private void importExcel()
+        {
+            //if (__mpn_ime.Count == 0)
             if (mpn_ime.Count == 0)
             {
-                MessageBox.Show("MPN Listesi Hazır Değil, Önce MPN Listesini Yükleyin");
+                MessageBox.Show(LogString);
             }
             else
             {
@@ -80,7 +102,8 @@ namespace Item_Subtracter
                             {
                                 int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x == mpn);
                                 int index_a = MPN_Listesi.FindIndex(x => x == item);
-                                string __mpn = mpn_ime[index_a].Key.ToString();
+                                //string __mpn = __mpn_ime[index_a].Key.ToString();
+                                string __mpn = mpn_ime[index_a].ToString();
                                 List<CompleteItems_v2> mpn_bulunan_urunler = db.CompleteItems_v2.Where(x => x.MPN == __mpn).ToList();
 
                                 MPN _mpn = new MPN();
@@ -151,7 +174,8 @@ namespace Item_Subtracter
                         if (temp != row.Cells[dgMPN.Index].Value.ToString())
                         {
                             temp = row.Cells[dgMPN.Index].Value.ToString();
-                            c = Color.FromArgb((100 + rnd.Next(128)), (100 + rnd.Next(128)), (100 + rnd.Next(128)));
+                            //c = Color.FromArgb((100 + rnd.Next(128)), (100 + rnd.Next(128)), (100 + rnd.Next(128)));
+                            c = ColorList[Convert.ToInt32(row.Cells[dgNo.Index].Value) % 10];
                         }
                         row.DefaultCellStyle.BackColor = c;
                     }
@@ -186,17 +210,38 @@ namespace Item_Subtracter
 
         private void GetAllItems()
         {
-            mpn_ime = db.MPN_List.GroupBy(x => x.MPN).ToList();
-            foreach (var item in mpn_ime)
+            string[] lines = new string[0];
+            try
             {
-                if (item.Key != null)
+                lines = System.IO.File.ReadAllLines("C:\\Program Files\\GenarSoft\\ItemSubtracter\\MPNList.txt");
+
+                foreach (string item in lines)
                 {
-                    MPN_Listesi.Add(RemoveIgnoredCharacters(item.Key).ToUpper());
+                    if (item != "")
+                    {
+                        mpn_ime.Add(item);
+                    }
+                    else
+                    {
+                        mpn_ime.Add(null);
+                    }
                 }
-                else
+
+                foreach (var item in mpn_ime)
                 {
-                    MPN_Listesi.Add(null);
+                    if (item != null)
+                    {
+                        MPN_Listesi.Add(RemoveIgnoredCharacters(item).ToUpper());
+                    }
+                    else
+                    {
+                        MPN_Listesi.Add(null);
+                    }
                 }
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                LogString = "'Yerel Disk C' içeriside 'MPNList.txt' bulunamadı!";
             }
         }
 
@@ -297,28 +342,66 @@ namespace Item_Subtracter
                     row.Cells[dgStockQuantity.Index].Style.ForeColor = Color.Red;
                 }
             }
-
-            row.Cells[dgPrice.Index].Value = rowItem.item?.Col1Price;
+            row.Cells[dgColBreak1.Index].Value = rowItem.item?.Col1Break;
+            row.Cells[dgPrice1.Index].Value = rowItem.item?.Col1Price;
+            row.Cells[dgColBreak2.Index].Value = rowItem.item?.Col2Break;
+            row.Cells[dgPrice2.Index].Value = rowItem.item?.Col2Price;
             row.Cells[dgMHCodeLevel1.Index].Value = rowItem.item?.MH_Code_Level_1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = "Yükleniyor";
+            LogString = "Yükleniyor";
+            label1.Text = LogString;
             label1.ForeColor = Color.MidnightBlue;
             this.Refresh();
             try
             {
-                GetAllItems();
-                label1.Text = "Liste Hazır";
-                label1.ForeColor = Color.Green;
+                pb_ProgressCircle.Visible = true;
+                bw_TakeMPNList.RunWorkerAsync();
                 button1.Visible = false;
             }
             catch (Exception ex)
             {
-                label1.Text = "Liste Yüklenemedi!";
+                LogString = "Liste Yüklenemedi!";
+                label1.Text = LogString;
                 label1.ForeColor = Color.Red;
-                mpn_ime = new List<IGrouping<string, MPN_List>>();
+                //__mpn_ime = new List<IGrouping<string, MPN_List>>();
+                mpn_ime = new List<string>();
+            }
+        }
+
+        private void bw_TakeMPNList_DoWork(object sender, DoWorkEventArgs e)
+        {
+            GetAllItems();
+        }
+
+        private void bw_TakeMPNList_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LogString = "Liste Hazır";
+            label1.Text = LogString;
+            label1.ForeColor = Color.Green;
+            pb_ProgressCircle.Visible = false;
+        }
+        
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            var list = db.MPN_List.GroupBy(x => x.MPN).ToList();
+
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"C:\MPNList.txt"))
+            {
+                foreach (var item in list)
+                {
+                    if (item.Key != null)
+                    {
+                        file.WriteLine(item.Key);
+                    }
+                    else
+                    {
+                        file.WriteLine("");
+                    }
+                }
             }
         }
     }

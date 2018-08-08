@@ -14,7 +14,14 @@
           <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
           <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
           <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-          <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+          <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+          <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+          <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+          <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+          <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+          <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+          <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+          <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
           <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
           <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
           <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
