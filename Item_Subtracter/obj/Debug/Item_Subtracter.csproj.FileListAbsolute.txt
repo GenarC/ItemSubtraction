@@ -36,3 +36,4 @@ C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.appl
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csproj.CopyComplete
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.exe
 C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.pdb
+C:\C#Repositories\ItemSubtraction\Item_Subtracter\obj\Debug\Item_Subtracter.csprojAssemblyReference.cache

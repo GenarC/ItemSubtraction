@@ -213,7 +213,7 @@ namespace Item_Subtracter
             string[] lines = new string[0];
             try
             {
-                lines = System.IO.File.ReadAllLines("C:\\Program Files\\GenarSoft\\ItemSubtracter\\MPNList.txt");
+                lines = System.IO.File.ReadAllLines(System.Windows.Forms.Application.StartupPath + "\\MPNList.txt");
 
                 foreach (string item in lines)
                 {

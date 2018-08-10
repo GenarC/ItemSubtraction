@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item_Subtracter", "Item_Subtracter\Item_Subtracter.csproj", "{664E3A6D-9E6F-4B3E-A7B1-729DDACA81A2}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ItemSubtracterWizard", "ItemSubtracterWizard\ItemSubtracterWizard.vdproj", "{AD32D431-CD57-4B7A-8270-A630BE690571}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ItemSubtracterWizard", "ItemSubtracterWizard\ItemSubtracterWizard.vdproj", "{181517E8-CD9B-46E1-95A8-A7FDD8572ABE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{664E3A6D-9E6F-4B3E-A7B1-729DDACA81A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{664E3A6D-9E6F-4B3E-A7B1-729DDACA81A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{664E3A6D-9E6F-4B3E-A7B1-729DDACA81A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD32D431-CD57-4B7A-8270-A630BE690571}.Debug|Any CPU.ActiveCfg = Debug
-		{AD32D431-CD57-4B7A-8270-A630BE690571}.Release|Any CPU.ActiveCfg = Release
+		{181517E8-CD9B-46E1-95A8-A7FDD8572ABE}.Debug|Any CPU.ActiveCfg = Debug
+		{181517E8-CD9B-46E1-95A8-A7FDD8572ABE}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
