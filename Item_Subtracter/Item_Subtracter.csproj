@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>35</ApplicationRevision>
+    <ApplicationRevision>36</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -151,6 +151,7 @@
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\RoundedRectangleF.cs" />
     <Compile Include="Helpers\Transparenter.cs" />
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

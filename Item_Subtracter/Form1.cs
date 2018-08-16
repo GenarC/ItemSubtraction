@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Item_Subtracter.DataModel;
+using Item_Subtracter.Helpers;
 using Microsoft.Office.Interop.Excel;
 
 namespace Item_Subtracter
@@ -213,6 +215,14 @@ namespace Item_Subtracter
             string[] lines = new string[0];
             try
             {
+                string fileName = "MPNList.txt";
+                string mpnFilePath = System.Windows.Forms.Application.StartupPath + "\\" + fileName;
+                if (!File.Exists(mpnFilePath))
+                {
+                    File.Create(fileName).Dispose();
+                    MPNlistFiller();
+                }
+
                 lines = System.IO.File.ReadAllLines(System.Windows.Forms.Application.StartupPath + "\\MPNList.txt");
 
                 foreach (string item in lines)
@@ -238,6 +248,8 @@ namespace Item_Subtracter
                         MPN_Listesi.Add(null);
                     }
                 }
+
+
             }
             catch (System.IO.FileNotFoundException ex)
             {
@@ -445,10 +457,15 @@ namespace Item_Subtracter
         
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
+            MPNlistFiller();
+        }
+
+        private void MPNlistFiller()
+        {
             var list = db.MPN_List.GroupBy(x => x.MPN).ToList();
 
             using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(@"C:\MPNList.txt"))
+            new System.IO.StreamWriter(System.Windows.Forms.Application.StartupPath + "\\MPNList.txt"))
             {
                 foreach (var item in list)
                 {
@@ -467,6 +484,14 @@ namespace Item_Subtracter
         private void bw_ItemAnalyzer_DoWork(object sender, DoWorkEventArgs e)
         {
             importExcel();
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            if (dgItems.RowCount > 0)
+            {
+                Utils.ExportDataGridToExcel(dgItems, "Bulunan Ürünler");
+            }
         }
     }
 
