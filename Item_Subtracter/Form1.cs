@@ -32,6 +32,11 @@ namespace Item_Subtracter
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           dgItems, new object[] { true });
+
             db = new IMEEntities();
             ColorList.Add(Color.FromArgb(244, 176, 132));
             ColorList.Add(Color.FromArgb(180, 198, 231));
@@ -104,7 +109,6 @@ namespace Item_Subtracter
                             {
                                 int ham_mpn_indexi = Donusturulmus_MPN_Listesi.FindIndex(x => x == mpn);
                                 int index_a = MPN_Listesi.FindIndex(x => x == item);
-                                //string __mpn = __mpn_ime[index_a].Key.ToString();
                                 string __mpn = mpn_ime[index_a].ToString();
                                 List<CompleteItems_v2> mpn_bulunan_urunler = db.CompleteItems_v2.Where(x => x.MPN == __mpn).ToList();
 
