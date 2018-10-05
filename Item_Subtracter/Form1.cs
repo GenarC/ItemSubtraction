@@ -227,7 +227,7 @@ namespace Item_Subtracter
                     MPNlistFiller();
                 }
 
-                lines = System.IO.File.ReadAllLines(System.Windows.Forms.Application.StartupPath + "\\MPNList.txt");
+                lines = System.IO.File.ReadAllLines(mpnFilePath);
 
                 foreach (string item in lines)
                 {
