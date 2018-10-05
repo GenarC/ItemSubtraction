@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CompleteItems_v2">
+    <Key>
+      <PropertyRef Name="Article_No" />
+      <PropertyRef Name="dependantTable" />
+    </Key>
+    <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pack_Quantity" Type="Int32" />
+    <Property Name="Unit_Content" Type="Int32" />
+    <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Col1Break" Type="Int32" />
+    <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Col2Break" Type="Int32" />
+    <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Col3Break" Type="Int32" />
+    <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Col4Break" Type="Int32" />
+    <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Col5Break" Type="Int32" />
+    <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="CatalogueStatus" Type="Int32" />
+    <Property Name="OnhandStockBalance" Type="Int64" />
+    <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MPN_List">
+    <Key>
+      <PropertyRef Name="table" />
+    </Key>
+    <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="table" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" />
+    <EntitySet Name="MPN_List" EntityType="Self.MPN_List" />
+  </EntityContainer>
+</Schema>

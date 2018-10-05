@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CompleteItems_v2">
+          <Key>
+            <PropertyRef Name="Article_No" />
+            <PropertyRef Name="dependantTable" />
+          </Key>
+          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Quantity" Type="int" />
+          <Property Name="Unit_Content" Type="int" />
+          <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Col1Break" Type="int" />
+          <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col2Break" Type="int" />
+          <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col3Break" Type="int" />
+          <Property Name="Col3Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col4Break" Type="int" />
+          <Property Name="Col4Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col5Break" Type="int" />
+          <Property Name="Col5Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CatalogueStatus" Type="int" />
+          <Property Name="OnhandStockBalance" Type="bigint" />
+          <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.MPN_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MPN_List">
+          <Key>
+            <PropertyRef Name="table" />
+          </Key>
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
+          <Property Name="table" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IMEModelStoreContainer">
+          <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompleteItems_v2].[Article_No] AS [Article_No], 
+    [CompleteItems_v2].[Article_Desc] AS [Article_Desc], 
+    [CompleteItems_v2].[Pack_Quantity] AS [Pack_Quantity], 
+    [CompleteItems_v2].[Unit_Content] AS [Unit_Content], 
+    [CompleteItems_v2].[Unit_Measure] AS [Unit_Measure], 
+    [CompleteItems_v2].[MPN] AS [MPN], 
+    [CompleteItems_v2].[Manufacturer] AS [Manufacturer], 
+    [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
+    [CompleteItems_v2].[Col1Break] AS [Col1Break], 
+    [CompleteItems_v2].[Col1Price] AS [Col1Price], 
+    [CompleteItems_v2].[Col2Break] AS [Col2Break], 
+    [CompleteItems_v2].[Col2Price] AS [Col2Price], 
+    [CompleteItems_v2].[Col3Break] AS [Col3Break], 
+    [CompleteItems_v2].[Col3Price] AS [Col3Price], 
+    [CompleteItems_v2].[Col4Break] AS [Col4Break], 
+    [CompleteItems_v2].[Col4Price] AS [Col4Price], 
+    [CompleteItems_v2].[Col5Break] AS [Col5Break], 
+    [CompleteItems_v2].[Col5Price] AS [Col5Price], 
+    [CompleteItems_v2].[CatalogueStatus] AS [CatalogueStatus], 
+    [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
+    [CompleteItems_v2].[dependantTable] AS [dependantTable]
+    FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MPN_List" EntityType="Self.MPN_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MPN_List].[MPN] AS [MPN], 
+    [MPN_List].[table] AS [table]
+    FROM [dbo].[MPN_List] AS [MPN_List]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompleteItems_v2">
+          <Key>
+            <PropertyRef Name="Article_No" />
+            <PropertyRef Name="dependantTable" />
+          </Key>
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Quantity" Type="Int32" />
+          <Property Name="Unit_Content" Type="Int32" />
+          <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Col1Break" Type="Int32" />
+          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col2Break" Type="Int32" />
+          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col3Break" Type="Int32" />
+          <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col4Break" Type="Int32" />
+          <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col5Break" Type="Int32" />
+          <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CatalogueStatus" Type="Int32" />
+          <Property Name="OnhandStockBalance" Type="Int64" />
+          <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MPN_List">
+          <Key>
+            <PropertyRef Name="table" />
+          </Key>
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="table" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" />
+          <EntitySet Name="MPN_List" EntityType="Self.MPN_List" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IMEModelStoreContainer" CdmEntityContainer="IMEEntities">
+          <EntitySetMapping Name="CompleteItems_v2">
+            <EntityTypeMapping TypeName="IMEModel.CompleteItems_v2">
+              <MappingFragment StoreEntitySet="CompleteItems_v2">
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
+                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
+                <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MPN_List">
+            <EntityTypeMapping TypeName="IMEModel.MPN_List">
+              <MappingFragment StoreEntitySet="MPN_List">
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="table" ColumnName="table" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
